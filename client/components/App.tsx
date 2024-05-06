@@ -3,7 +3,6 @@ import Circle from './Circle'
 interface Props {
   width: number
   height: number
-  r: number
 }
 
 function App({ width, height }: Props) {

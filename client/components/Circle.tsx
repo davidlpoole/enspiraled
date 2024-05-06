@@ -3,14 +3,14 @@ import { useState } from 'react'
 interface Props {
   cx: number
   cy: number
-  level: number
-  r: number
-  fill: string
+  level?: number
+  r?: number
+  fill?: string
 }
 
 const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
 
-export default function Circle({ level, cx, cy, r }: Props) {
+export default function Circle({ cx, cy, level = 0, r = 256 }: Props) {
   const [clicked, setClicked] = useState(false)
 
   if (level > 7) return null
