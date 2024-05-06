@@ -6,16 +6,9 @@ interface Props {
 }
 
 function App({ width, height }: Props) {
-  const circle = {
-    cx: width / 2,
-    cy: height / 2,
-    level: 0,
-    r: 256,
-  }
-
   return (
     <svg width={width} height={height}>
-      <Circle {...circle} />
+      <Circle cx={width / 2} cy={height / 2} />
     </svg>
   )
 }
