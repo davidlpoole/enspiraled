@@ -3,27 +3,23 @@ import { useState } from 'react'
 interface Props {
   cx: number
   cy: number
-  level?: number
   r?: number
   fill?: string
 }
 
-const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
+function randomColor() {
+  return `#${Math.floor(Math.random() * 1000).toString(16)}`
+}
 
-export default function Circle({ cx, cy, level = 0, r = 256 }: Props) {
+export default function Circle({ cx, cy, r = 256 }: Props) {
   const [clicked, setClicked] = useState(false)
-
-  if (level > 7) return null
-
-  const handleClick = () => setClicked(true)
 
   const generateCircle = (offsetX: number, offsetY: number) => (
     <Circle
-      level={level + 1}
-      cx={cx + (offsetX * r) / 2}
-      cy={cy + (offsetY * r) / 2}
+      cx={cx + offsetX * r}
+      cy={cy + offsetY * r}
       r={r / 2}
-      fill={colors[(level + 1) % colors.length]}
+      fill={randomColor()}
     />
   )
 
@@ -39,11 +35,11 @@ export default function Circle({ cx, cy, level = 0, r = 256 }: Props) {
   return (
     <>
       <circle
-        onClick={handleClick}
+        onMouseOver={() => setClicked(true)}
         cx={cx}
         cy={cy}
         r={r}
-        fill={colors[level % colors.length]}
+        fill={randomColor()}
       />
       {circles}
     </>
